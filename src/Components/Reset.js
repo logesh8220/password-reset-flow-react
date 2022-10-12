@@ -15,7 +15,7 @@ function Reset() {
         },
         onSubmit: async (values) =>{
             let reset = {
-                values,
+                values:values,
                 Token,
                 Id
             }
