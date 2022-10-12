@@ -12,7 +12,21 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.signin{
+  box-shadow: 2px 2px 20px lightgray;
+  padding: 100px;
+  border-radius: 5px;
+}
+input.input_error,
+select.input_error{
+  border-color: red;
+}
+.error{
+  color: red;
+  font-size: smaller;
+  opacity: 70%;
+  padding: 5px;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
