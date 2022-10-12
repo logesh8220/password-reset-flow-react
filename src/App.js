@@ -23,7 +23,7 @@ function App() {
           <Route path='/home' element={<Home />}></Route>
         </Route>
           <Route path='/forgot' element={<Forgot />}></Route>
-          <Route path='/:Id/Token' element={<Reset />}></Route>
+          <Route path='/:Id/:Token' element={<Reset />}></Route>
       </Routes>
       <ToastContainer/>
     </BrowserRouter>
