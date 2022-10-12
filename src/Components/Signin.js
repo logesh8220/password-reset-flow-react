@@ -2,10 +2,12 @@ import axios from "axios";
 import { useFormik } from "formik";
 import React from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { node } from "./Config";
 import { Authschema } from "./Validation";
 
 function Signin() {
+  const navigateto = useNavigate()
   const { handleChange, handleSubmit, values, errors, touched } = useFormik({
     initialValues: {
       Name: "",
@@ -17,7 +19,8 @@ function Signin() {
     onSubmit: async (values) => {
       try {
         let data = await axios.post(`${node.api}/user/signin`,values)
-        alert("signin success")
+        navigateto('/login')
+        toast("signin success")
       } catch (error) {
         console.log(error)
       }
@@ -73,9 +76,9 @@ function Signin() {
            />
           {errors.ConfirmPassword && touched && <p class="error"><i class="bi bi-shield-fill-exclamation me-1 p-1"></i>{errors.ConfirmPassword}</p>}
         </div>
-        <Link to={'/login'} type="submit" class="btn btn-primary col-12">
+        <button  type="submit" class="btn btn-primary col-12">
           Submit
-        </Link>
+        </button>
         <div class="text-center">
           <p>Already have a acoount Please login</p>
           <Link to={"/login"}>Login</Link>
