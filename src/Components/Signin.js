@@ -8,6 +8,7 @@ import { Authschema } from "./Validation";
 
 function Signin() {
   const navigateto = useNavigate()
+  const [isloading, setloading] = useState(false)
   const { handleChange, handleSubmit, values, errors, touched } = useFormik({
     initialValues: {
       Name: "",
@@ -18,7 +19,9 @@ function Signin() {
     validationSchema: Authschema,
     onSubmit: async (values) => {
       try {
+        setloading(true)
         let data = await axios.post(`${node.api}/user/signin`,values)
+        setloading(false)
         navigateto('/login')
         toast("signin success")
       } catch (error) {
@@ -81,7 +84,15 @@ function Signin() {
         </button>
         <div class="text-center">
           <p>Already have a acoount Please login</p>
+          {
+              
+        isloading ? <div class="text-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>:
           <Link to={"/login"}>Login</Link>
+          }
         </div>
       </form>
     </div>
