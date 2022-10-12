@@ -12,21 +12,20 @@ function Reset() {
         initialValues:{
                 Password:"",
                 confirmPassword:"",
+                Token:Token,
+                Id:Id,
         },
         onSubmit: async (values) =>{
-            let reset = {
-                values:values,
-                Token,
-                Id
-            }
-            console.log(reset)
+
+            console.log(values)
             try {
                 setloading(true)
-                let data = await axios.post(`${node.api}/user/reset`,reset)
+                let data = await axios.post(`${node.api}/user/reset`,values)
                 setloading(false)
                 toast.success("password rest success")
               } catch (error) {
-                console.log(error)
+                  console.log(error)
+                  setloading(false)
               }
         }
         
@@ -41,7 +40,7 @@ function Reset() {
 </div>
 <div class="mb-3">
   <label  class="form-label">ConfirmPassword</label>
-  <input type="password" class="form-control" aria-describedby="emailHelp"/>
+  <input type="String" class="form-control" aria-describedby="emailHelp"/>
 </div>
 <button type="submit" class="btn btn-primary col-12">Submit</button>
 <div class="text-center">
