@@ -1,11 +1,12 @@
 import axios from 'axios'
 import { useFormik } from 'formik'
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { node } from './Config'
 
 function Forgot() {
+    const [isloading, setloading] = useState(false)
     const {handleChange,handleSubmit,values}  = useFormik({
         initialValues:{
                 Email:"",
@@ -34,7 +35,15 @@ function Forgot() {
 <Link to={'/login'}>Login</Link>
 </div>
 <div class="text-center">
+    {
+        
+        isloading ? <div class="text-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>:
 <Link to={'/'} class="btn btn-primary col-12">Close</Link>
+    }
 </div>
 </form>
   </div>
