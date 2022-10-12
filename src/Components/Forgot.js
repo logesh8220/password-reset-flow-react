@@ -13,8 +13,10 @@ function Forgot() {
         },
         onSubmit: async (values) =>{
             try {
+                setloading(true)
                 let data = await axios.post(`${node.api}/user/forgot`,values)
                 console.log(data)
+                setloading(false)
                 toast.success("Password link sent success")
               } catch (error) {
                 console.log(error)

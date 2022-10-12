@@ -21,7 +21,9 @@ function Reset() {
             }
             console.log(reset)
             try {
+                setloading(true)
                 let data = await axios.post(`${node.api}/user/reset`,reset)
+                setloading(false)
                 toast.success("password rest success")
               } catch (error) {
                 console.log(error)
