@@ -30,7 +30,6 @@ function Login() {
 
             } catch (error) {
                 console.log(error)
-                navigateto('/login')
                 setloading(false)
                 toast.success(error.response.data.message)
             }

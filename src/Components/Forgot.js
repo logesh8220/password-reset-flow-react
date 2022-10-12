@@ -13,7 +13,7 @@ function Forgot() {
             try {
                 let data = await axios.post(`${node.api}/user/forgot`,values)
                 console.log(data)
-                alert("Password link sent success")
+                toast.success("Password link sent success")
               } catch (error) {
                 console.log(error)
               }
